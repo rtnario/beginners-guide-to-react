@@ -1,5 +1,52 @@
 <body>
   <div id="root"></div>
+  <!-- React to create elements -->
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <!-- React.DOM to render -->
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script type="text/javascript">
+    const rootElement = document.getElementById('root');
+    const element = React.createElement('div', {
+      children: 'Hello World',
+      className: 'container'
+    })
+    ReactDOM.render(element, rootElement);
+
+    // the first render is overwritten?
+    const element2 = React.createElement('div', {
+      children: 'Hello World a Second Time',
+      className: 'container'
+    })
+    ReactDOM.render(element2, rootElement);
+
+    // children was transferred to the 3rd arg of createElement
+    const element3 = React.createElement('div', {
+      className: 'container'
+    },
+    'Hello World a Third Time',
+    ', Goodbye World'
+    )
+    ReactDOM.render(element3, rootElement);
+
+    // directly make array as children
+    const element4 = React.createElement('div', {
+      children: ['Hello World a Fourth Time', ', Goodbye World'],
+      className: 'container'
+    })
+    ReactDOM.render(element4, rootElement);
+
+    // create additional React elements as children
+    const element5 = React.createElement('div', {
+      children: React.createElement('span', null, 'Hello', ' World'),
+      className: 'container'
+    })
+    ReactDOM.render(element5, rootElement);
+  </script>
+</body>
+
+<!--
+<body>
+  <div id="root"></div>
   <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
   <script type="text/javascript">
@@ -11,3 +58,4 @@
     ReactDOM.render(element, rootElement)
   </script>
 </body>
+-->
