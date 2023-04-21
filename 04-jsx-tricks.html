@@ -5,6 +5,46 @@
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
     const rootElement = document.getElementById('root')
+    const children = 'Hello'
+    const worldChild = ' World'
+    const className = 'container'
+    const props = {children, className}
+
+    // Anything within the curly braces is a JavaScript Expression
+    const element = (
+      <div className={className}>
+        {children}
+        {worldChild}
+      </div>
+    )
+
+    const elementWithMoreJSX = (
+      <div className={className}>
+        <span>Hello</span> <strong>World</strong>
+      </div>
+    )
+
+    // JSX can have self-closing tags for divs
+    const elementWithChildrenProp = (
+      <div className={className} children={children} />
+    )
+
+    // Need to understand this part better
+    // what is app-root? what is _extends?
+    const elementUsingProps = <div id="app-root" {...props} className="not-container" />
+
+    ReactDOM.render(elementUsingProps, rootElement)
+  </script>
+</body>
+
+<!--
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    const rootElement = document.getElementById('root')
     const children = 'Hello World'
     const className = 'container'
     const props = {children, className}
@@ -12,3 +52,4 @@
     ReactDOM.render(element, rootElement)
   </script>
 </body>
+-->
