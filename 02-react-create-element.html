@@ -1,5 +1,56 @@
 <body>
   <div id="root"></div>
+  <!-- needed for creating React elements -->
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <!-- needed for rendering React elements -->
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script type="text/javascript">
+    // get access to some element on the page to render elements to that DOM node
+    const rootElement = document.getElementById('root')
+
+    const element = React.createElement('div', {
+      children: 'Hello World',
+      className: 'container'
+    })
+
+    const elementWithChildrenAsParam = React.createElement(
+      'div',
+      {
+        className: 'container'
+      },
+      'Hello World',
+      ', Goodbye World'
+    )
+
+    const elementWithArrayOfChildren = React.createElement('div',
+      {
+        children: ['Hello World', ', Goodbye World'],
+        className: 'container'
+      }
+    )
+
+    const elementWithCreateElement = React.createElement('div',
+      {
+        // arg 1: element
+        // arg 2: props
+        // arg 3 onwards: children
+        children: React.createElement('span', null, 'Hello', ' World'),
+        className: 'container'
+      }
+    )
+
+    // $$typeof: Symbol(react.element)
+    // This is how React knows that this is a legitimate React element
+    console.log(elementWithCreateElement)
+
+    // render element to root DOM node
+    ReactDOM.render(elementWithCreateElement, rootElement)
+  </script>
+</body>
+
+<!--
+<body>
+  <div id="root"></div>
   <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
   <script type="text/javascript">
@@ -11,3 +62,4 @@
     ReactDOM.render(element, rootElement)
   </script>
 </body>
+-->
