@@ -1,5 +1,64 @@
 <body>
   <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.6.1/prop-types.js"></script>
+  <script type="text/babel">
+    const rootElement = document.getElementById('root')
+
+    function SayHello({firstName, lastName}) {
+      return (
+        <div>
+          Hello {firstName} {lastName}!
+        </div>
+      )
+    }
+    // PropTypes = runtime validation that verifies props passed to components
+    // Manual Validation per Prop
+    // SayHello.propTypes = {
+    //   firstName(props, propName, componentName) {
+    //     if (typeof props[propName] !== 'string') {
+    //       return new Error(
+    //         `Hey, the component ${componentName} needs the prop ${propName} to be a string, but you passed a ${typeof props[propName]}`
+    //       )
+    //     }
+    //   }
+    // }
+
+    // Custom validators creation
+    // const PropTypes = {
+    //   string(props, propName, componentName) {
+    //     if (typeof props[propName] !== 'string') {
+    //       return new Error(
+    //         `Hey, the component ${componentName} needs the prop ${propName} to be a string, but you passed a ${typeof props[propName]}`
+    //       )
+    //     }
+    //   }
+    // }
+
+    // You can add validators for other parameters and types
+    // NOTE: PropTypes by default are not required unless explicitly specified
+    SayHello.propTypes = {
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired
+    }
+
+    const element = <SayHello firstName={false} />
+
+    ReactDOM.render(element, rootElement)
+
+    // PropTypes code only works with React in dev mode
+    // Remove PropTypes code by production mode
+    // https://www.npmjs.com/package/babel-plugin-transform-react-remove-prop-types
+    // Also check out prop-types npm page for more info
+    // https://www.npmjs.com/package/prop-types
+  </script>
+</body>
+
+<!--
+<body>
+  <div id="root"></div>
   <script src="https://unpkg.com/react@16.12.0/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
@@ -24,3 +83,4 @@
     ReactDOM.render(element, rootElement)
   </script>
 </body>
+-->
