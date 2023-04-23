@@ -1,46 +1,50 @@
 <body>
   <div id="root"></div>
-  <!-- React to create elements -->
+  <!-- needed for creating React elements -->
   <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
-  <!-- React.DOM to render -->
+  <!-- needed for rendering React elements -->
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
   <script type="text/javascript">
-    const rootElement = document.getElementById('root');
+    // get access to some element on the page to render elements to that DOM node
+    const rootElement = document.getElementById('root')
+
     const element = React.createElement('div', {
       children: 'Hello World',
       className: 'container'
     })
-    ReactDOM.render(element, rootElement);
 
-    // the first render is overwritten?
-    const element2 = React.createElement('div', {
-      children: 'Hello World a Second Time',
-      className: 'container'
-    })
-    ReactDOM.render(element2, rootElement);
-
-    // children was transferred to the 3rd arg of createElement
-    const element3 = React.createElement('div', {
-      className: 'container'
-    },
-    'Hello World a Third Time',
-    ', Goodbye World'
+    const elementWithChildrenAsParam = React.createElement(
+      'div',
+      {
+        className: 'container'
+      },
+      'Hello World',
+      ', Goodbye World'
     )
-    ReactDOM.render(element3, rootElement);
 
-    // directly make array as children
-    const element4 = React.createElement('div', {
-      children: ['Hello World a Fourth Time', ', Goodbye World'],
-      className: 'container'
-    })
-    ReactDOM.render(element4, rootElement);
+    const elementWithArrayOfChildren = React.createElement('div',
+      {
+        children: ['Hello World', ', Goodbye World'],
+        className: 'container'
+      }
+    )
 
-    // create additional React elements as children
-    const element5 = React.createElement('div', {
-      children: React.createElement('span', null, 'Hello', ' World'),
-      className: 'container'
-    })
-    ReactDOM.render(element5, rootElement);
+    const elementWithCreateElement = React.createElement('div',
+      {
+        // arg 1: element
+        // arg 2: props
+        // arg 3 onwards: children
+        children: React.createElement('span', null, 'Hello', ' World'),
+        className: 'container'
+      }
+    )
+
+    // $$typeof: Symbol(react.element)
+    // This is how React knows that this is a legitimate React element
+    console.log(elementWithCreateElement)
+
+    // render element to root DOM node
+    ReactDOM.render(elementWithCreateElement, rootElement)
   </script>
 </body>
 

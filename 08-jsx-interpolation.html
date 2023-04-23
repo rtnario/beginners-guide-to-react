@@ -1,3 +1,47 @@
+<!-- HTML Land -->
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <!-- Style Tags = CSS Land -->
+  <script type="text/babel">
+    // JS Land
+    // The text "Hello World" has 11 characters
+    // The text "" has No characters
+
+    // JS Land
+    function CharacterCount({text}) {
+      return (
+        // JSX Land
+        // Everything in between the curly braces are to be stuck in React's createElement call
+        // React.createElement('div', null, js_expression_here_if_for_does_not_sense)
+        <div>
+          {/* JS Land - Expressions Only */}
+          {`The text "${text}" has `}
+          {/* JS Land */ text.length ? /* JSX Land */<strong>{/* JS Land */text.length/* JSX Land */}</strong> : /* JS Land */'No'}
+          {/* JS Land */' characters'}
+        </div>
+        // JSX Land
+      )
+    }
+
+    // basically,
+    // JS Land = function, return, conditionals, expressions, anything in curly braces
+    // JSX Land = anything with tags and HTML-like
+
+    const element = (
+      <>
+        <CharacterCount text="Hello World" />
+        <CharacterCount text="" />
+      </>
+    )
+
+    ReactDOM.render(element, document.getElementById('root'))
+  </script>
+</body>
+
+<!--
 <body>
   <div id="root"></div>
   <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
@@ -24,3 +68,4 @@
     ReactDOM.render(element, document.getElementById('root'))
   </script>
 </body>
+-->

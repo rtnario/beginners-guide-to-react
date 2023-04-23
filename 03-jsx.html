@@ -2,14 +2,13 @@
   <div id="root"></div>
   <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
-  <!-- in-browser babel standalone transformer, not recommended for prod, precompile -->
+  <!-- In-browser Babel transformer! Do not use on prod! -->
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
-  <!-- javascript changed to babel -->
   <script type="text/babel">
     const rootElement = document.getElementById('root')
-    // this is JSX (JavaScript XML), browser does not understand by default
-    // HTML-like syntax for authoring UI
-    const element = <div className="container">Hello World</div>
+    // This is JSX code! Browser does not understand natively!
+    // Needs to be compiled from this v, to something that the browser can understand
+    const element = <div className="container">Hello, World</div>
     ReactDOM.render(element, rootElement)
   </script>
 </body>

@@ -6,6 +6,59 @@
   <script type="text/babel">
     const rootElement = document.getElementById('root')
 
+    // Only time is updating, not Hello!
+    // React compares states and surgically changes only what is needed
+    // function tick() {
+    //   const time = new Date().toLocaleTimeString()
+    //   const element = (
+    //     <div>
+    //       <div>Hello</div>
+    //       {time}
+    //     </div>
+    //   )
+    //   ReactDOM.render(element, rootElement)
+    // }
+
+    // Using standard HTML, entire thing is swapped and updated
+    // Very inefficient as HTML changes, focus is lost as elements are fully replaced
+    // function tick() {
+    //   const time = new Date().toLocaleTimeString()
+    //   const element = `
+    //     <div>
+    //       <div>Hello</div>
+    //       ${time}
+    //     </div>
+    //   `
+    //   rootElement.innerHTML = element
+    // }
+
+    function tick() {
+      const time = new Date().toLocaleTimeString()
+      const element = (
+        <div>
+          <input value={time} />
+          <input value={time} />
+        </div>
+      )
+
+      // React rendering only updates the differences
+      ReactDOM.render(element, rootElement)
+    }
+
+    tick()
+    setInterval(tick, 1000)
+  </script>
+</body>
+
+<!--
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    const rootElement = document.getElementById('root')
+
     function tick() {
       const time = new Date().toLocaleTimeString()
       const element = (
@@ -20,3 +73,4 @@
     setInterval(tick, 1000)
   </script>
 </body>
+-->
